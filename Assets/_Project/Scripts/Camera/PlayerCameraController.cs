@@ -78,10 +78,10 @@ public class PlayerCameraController : MonoBehaviour
 
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
-        // El CameraPivot rota para controlar la cámara.
-        transform.rotation = Quaternion.Euler(0f, yaw, 0f);
+        // La cámara rota horizontal y verticalmente.
+        transform.rotation = Quaternion.Euler(pitch, yaw, 0f);
 
-        // El personaje gira horizontalmente con la cámara.
+        // El personaje solamente rota horizontalmente.
         target.rotation = Quaternion.Euler(0f, yaw, 0f);
     }
 
