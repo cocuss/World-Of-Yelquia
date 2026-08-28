@@ -33,23 +33,46 @@ public class NPCChatUI : MonoBehaviour
         if (string.IsNullOrEmpty(message))
             return;
 
-        // Mostrar mensaje del jugador
+        // Mostrar mensaje del jugador inmediatamente.
         AddMessage("Tú", message);
 
-        // Limpiar input
+        // Limpiar el input.
         messageInput.text = "";
-        messageInput.ActivateInputField();
 
-        // Obtener respuesta del NPC
+        // Obtener respuesta del NPC.
         if (npcBrain != null)
         {
-            string response = npcBrain.ProcessMessage(message);
+            npcBrain.ProcessMessage(
+                message,
 
-            AddMessage(npcBrain.NPCName, response);
+                // Respuesta correcta.
+                response =>
+                {
+                    AddMessage(
+                        npcBrain.NPCName,
+                        response
+                    );
+
+                    messageInput.ActivateInputField();
+                },
+
+                // Error.
+                error =>
+                {
+                    AddMessage(
+                        "Sistema",
+                        $"Error: {error}"
+                    );
+
+                    messageInput.ActivateInputField();
+                }
+            );
         }
         else
         {
-            Debug.LogWarning("NPCChatUI: NPCBrain no está asignado.");
+            Debug.LogWarning(
+                "NPCChatUI: NPCBrain no está asignado."
+            );
         }
     }
 

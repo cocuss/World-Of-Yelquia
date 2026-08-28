@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 208639811}
   - component: {fileID: 208639815}
   - component: {fileID: 208639816}
+  - component: {fileID: 208639817}
   m_Layer: 0
   m_Name: NPC_Aldren
   m_TagString: Untagged
@@ -260,9 +261,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b16cc5823410c429827692067f8741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCBrain
+  npcId: aldren
   npcName: Aldren
+  playerId: player_001
   personality: Eres Aldren, un habitante de Yelquia. Eres amable pero desconfiado
     con los desconocidos.
+  aiClient: {fileID: 0}
+--- !u!114 &208639817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208639810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7210a3356de3346892bd90a30a4b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIClient
+  backendUrl: http://127.0.0.1:5000/chat
 --- !u!1 &229887624
 GameObject:
   m_ObjectHideFlags: 0
